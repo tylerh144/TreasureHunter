@@ -19,7 +19,7 @@ public class Hunter {
      */
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
-        kit = new String[5]; // only 5 possible items can be stored in kit
+        kit = new String[6]; // only 5 possible items can be stored in kit
         gold = startingGold;
         gameOver = false;
     }
@@ -107,6 +107,11 @@ public class Hunter {
             return true;
         }
         return false;
+    }
+
+    public void testAdder(String item) {
+        int idx = emptyPositionInKit();
+        kit[idx] = item;
     }
 
     /**
