@@ -48,9 +48,9 @@ public class Town {
         this.hunter = hunter;
         printMessage = "Welcome to town, " + hunter.getHunterName() + ".";
         if (toughTown) {
-            printMessage += "\nIt's pretty rough around here, so watch yourself.";
+            printMessage += Colors.RED + "\nIt's pretty rough around here, so watch yourself." + Colors.RESET;
         } else {
-            printMessage += "\nWe're just a sleepy little town with mild mannered folk.";
+            printMessage += Colors.GREEN + "\nWe're just a sleepy little town with mild mannered folk." + Colors.RESET;
         }
     }
 
@@ -97,17 +97,17 @@ public class Town {
             noTroubleChance = 0.33;
         }
         if (Math.random() > noTroubleChance) {
-            printMessage = "You couldn't find any trouble";
+            printMessage = Colors.BLUE + "You couldn't find any trouble" + Colors.RESET;
         } else {
-            printMessage = "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
+            printMessage = Colors.RED + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
             int goldDiff = (int) (Math.random() * 10) + 1;
             if (Math.random() > noTroubleChance) {
-                printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
-                printMessage += "\nYou won the brawl and receive " + goldDiff + " gold.";
+                printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold." + Colors.RESET;
+                printMessage += Colors.GREEN + "\nYou won the brawl and receive " + Colors.YELLOW + goldDiff + Colors.GREEN + " gold." + Colors.RESET;
                 hunter.changeGold(goldDiff);
             } else {
                 printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
-                printMessage += "\nYou lost the brawl and pay " + goldDiff + " gold.";
+                printMessage += "\nYou lost the brawl and pay " + Colors.YELLOW + goldDiff + Colors.RED + " gold." + Colors.RESET;
                 hunter.changeGold(-goldDiff);
             }
         }
