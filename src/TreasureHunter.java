@@ -16,6 +16,7 @@ public class TreasureHunter {
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
+    private boolean test;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -52,6 +53,15 @@ public class TreasureHunter {
         String hard = SCANNER.nextLine().toLowerCase();
         if (hard.equals("y")) {
             hardMode = true;
+        } else if (hard.equals("test")) {
+            test = true;
+            hunter.changeGold(80);
+            hunter.testAdder("boat");
+            hunter.testAdder("machete");
+            hunter.testAdder("water");
+            hunter.testAdder("horse");
+            hunter.testAdder("rope");
+            hunter.testAdder("boots");
         }
     }
 
@@ -111,6 +121,7 @@ public class TreasureHunter {
             processChoice(choice);
         }
     }
+
 
     /**
      * Takes the choice received from the menu and calls the appropriate method to carry out the instructions.
