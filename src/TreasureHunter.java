@@ -16,6 +16,7 @@ public class TreasureHunter {
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
+    private boolean easyMode;
     private boolean test;
 
     /**
@@ -26,6 +27,7 @@ public class TreasureHunter {
         currentTown = null;
         hunter = null;
         hardMode = false;
+        easyMode = false;
     }
 
     /**
@@ -49,9 +51,9 @@ public class TreasureHunter {
         // set hunter instance variable
         hunter = new Hunter(name, 20);
 
-        System.out.print(Colors.RED + "Hard mode? (y/n): " + Colors.RESET);
+        System.out.print(Colors.RED + "Easy, normal, or hard mode? (e/n/h): " + Colors.RESET);
         String hard = SCANNER.nextLine().toLowerCase();
-        if (hard.equals("y")) {
+        if (hard.equals("h")) {
             hardMode = true;
         } else if (hard.equals("test")) {
             test = true;
@@ -62,8 +64,11 @@ public class TreasureHunter {
             hunter.testAdder("horse");
             hunter.testAdder("rope");
             hunter.testAdder("boots");
-        }
-    }
+        } else if (hard.equals("e")) {
+            hunter.changeGold((hunter.getGold()));
+            easyMode = true;
+            hunter.setEasyMode(true);
+        }    }
 
     /**
      * Creates a new town and adds the Hunter to it.
@@ -77,6 +82,9 @@ public class TreasureHunter {
 
             // and the town is "tougher"
             toughness = 0.75;
+        } else if (easyMode) {
+            markdown = 0;
+            toughness = .25;
         }
 
         // note that we don't need to access the Shop object
@@ -96,6 +104,15 @@ public class TreasureHunter {
         currentTown.hunterArrives(hunter);
     }
 
+    public String getDifficulty() {
+        if (hardMode) {
+            return "h";
+        } else if (easyMode) {
+            return "e";
+        } else {
+            return "n";
+        }
+    }
     /**
      * Displays the menu and receives the choice from the user.<p>
      * The choice is sent to the processChoice() method for parsing.<p>

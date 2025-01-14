@@ -145,6 +145,9 @@ public class Town {
      * @return true if the item broke.
      */
     private boolean checkItemBreak() {
+        if (hunter.isEasyMode()) {
+            return (false);
+        }
         double rand = Math.random();
         return (rand < 0.5);
     }
