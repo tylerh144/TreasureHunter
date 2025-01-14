@@ -13,6 +13,7 @@ public class Town {
     private boolean toughTown;
     private boolean searched;
     private String treasure;
+    private boolean dug;
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -24,6 +25,7 @@ public class Town {
         this.shop = shop;
         this.terrain = getNewTerrain();
 
+        dug = false;
         searched = false;
         double rand = Math.random();
         if (rand < .2) {
@@ -140,6 +142,25 @@ public class Town {
             searched = true;
         } else {
             System.out.println("\nYou have already searched this town.");
+        }
+    }
+
+    public void digForGold() {
+        if (!dug) {
+            if (hunter.hasItemInKit("shovel")) {
+                if (Math.random() < .5) {
+                    int gold = (int) (Math.random() * 20) + 1;
+                    hunter.changeGold(gold);
+                    System.out.println("You dug up " + Colors.YELLOW + gold + Colors.RESET + " gold!");
+                } else {
+                    System.out.println("You dug but only found dirt");
+                }
+                dug = true;
+            } else {
+                System.out.println("You can't dig for gold without a shovel");
+            }
+        } else {
+            System.out.println("You already dug for gold in this town.");
         }
     }
 
