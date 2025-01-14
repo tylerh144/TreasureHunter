@@ -10,6 +10,7 @@ public class Hunter {
     private String[] kit;
     private int gold;
     private boolean gameOver;
+    private boolean win;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -44,6 +45,10 @@ public class Hunter {
 
     public boolean isGameOver() {
         return gameOver;
+    }
+
+    public boolean isWin() {
+        return win;
     }
 
     /**

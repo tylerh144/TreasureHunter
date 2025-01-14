@@ -107,13 +107,8 @@ public class Town {
                 hunter.changeGold(goldDiff);
             } else {
                 hunter.changeGold(-goldDiff);
-                if (hunter.isGameOver()) {
-                    printMessage += "You don't have enough money to pay up...you're going to have to pay with your life.";
-                    printMessage += "\n\nEverything goes dark and you die." + Colors.RESET;
-                } else {
-                    printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
-                    printMessage += "\nYou lost the brawl and pay " + Colors.YELLOW + goldDiff + Colors.RED + " gold." + Colors.RESET;
-                }
+                printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
+                printMessage += "\nYou lost the brawl and pay " + Colors.YELLOW + goldDiff + Colors.RED + " gold." + Colors.RESET;
             }
         }
     }
