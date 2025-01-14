@@ -11,6 +11,7 @@ public class Hunter {
     private int gold;
     private boolean gameOver;
     private boolean win;
+    private String[] treasures;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -21,6 +22,7 @@ public class Hunter {
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
         kit = new String[6]; // only 5 possible items can be stored in kit
+        treasures = new String[3];
         gold = startingGold;
         gameOver = false;
     }
@@ -207,5 +209,17 @@ public class Hunter {
             }
         }
         return -1;
+    }
+
+    public void addTreasure(String treasure) {
+        for (int i = 0; i < treasures.length; i++) {
+             if (treasures[i] == null) {
+                treasures[i] = treasure;
+                break;
+            } else if (treasures[i].equals(treasure)) {
+                System.out.println("You already have a " + Colors.YELLOW + treasure + Colors.RESET + ", so you put it back.");
+                break;
+            }
+        }
     }
 }

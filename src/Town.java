@@ -11,6 +11,8 @@ public class Town {
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private boolean searched;
+    private String treasure;
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -21,6 +23,18 @@ public class Town {
     public Town(Shop shop, double toughness) {
         this.shop = shop;
         this.terrain = getNewTerrain();
+
+        searched = false;
+        double rand = Math.random();
+        if (rand < .2) {
+            treasure = "crown";
+        } else if (rand < .4) {
+            treasure = "trophy";
+        } else if (rand < .6) {
+            treasure = "gem";
+        } else {
+            treasure = "dust";
+        }
 
         // the hunter gets set using the hunterArrives method, which
         // gets called from a client class
@@ -46,7 +60,7 @@ public class Town {
      */
     public void hunterArrives(Hunter hunter) {
         this.hunter = hunter;
-        printMessage = "Welcome to town, " + hunter.getHunterName() + ".";
+        printMessage = "Welcome to town, " + Colors.PURPLE + hunter.getHunterName() + Colors.RESET + ".";
         if (toughTown) {
             printMessage += Colors.RED + "\nIt's pretty rough around here, so watch yourself." + Colors.RESET;
         } else {
@@ -106,15 +120,27 @@ public class Town {
                 printMessage += Colors.GREEN + "\nYou won the brawl and receive " + Colors.YELLOW + goldDiff + Colors.GREEN + " gold." + Colors.RESET;
                 hunter.changeGold(goldDiff);
             } else {
-                hunter.changeGold(-goldDiff);
                 printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
                 printMessage += "\nYou lost the brawl and pay " + Colors.YELLOW + goldDiff + Colors.RED + " gold." + Colors.RESET;
+                hunter.changeGold(-goldDiff);
             }
         }
     }
 
     public String infoString() {
         return "This nice little town is surrounded by " + terrain.getTerrainName() + ".";
+    }
+
+    public void treasureHunt() {
+        if (!searched) {
+            System.out.println("\nYou found a " + Colors.YELLOW + treasure + Colors.RESET);
+            if (!treasure.equals("dust")) {
+                hunter.addTreasure(treasure);
+            }
+            searched = true;
+        } else {
+            System.out.println("\nYou have already searched this town.");
+        }
     }
 
     /**

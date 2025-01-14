@@ -114,6 +114,7 @@ public class TreasureHunter {
             System.out.println("(E)xplore surrounding terrain.");
             System.out.println("(M)ove on to a different town.");
             System.out.println("(L)ook for trouble!");
+            System.out.println("(H)unt for treasure.");
             System.out.println("Give up the hunt and e(X)it.");
             System.out.println();
             System.out.print("What's your next move? ");
@@ -125,7 +126,7 @@ public class TreasureHunter {
         } else {
             System.out.println(Colors.RED + "\nYou want trouble, stranger!  You got it!\nOof! Umph! Ow!");
             System.out.println("That'll teach you to go lookin' fer trouble in MY town! Now pay up!");
-            System.out.println("What? You don't have enough money to pay up...then you're going to have to pay with your life.");
+            System.out.println("What? You don't have enough money to pay up...then you're going to have to pay with your life!");
             System.out.println("\nEverything goes dark and you die." + Colors.RESET);
         }
     }
@@ -148,6 +149,8 @@ public class TreasureHunter {
             }
         } else if (choice.equals("l")) {
             currentTown.lookForTrouble();
+        } else if (choice.equals("h")){
+            currentTown.treasureHunt();
         } else if (choice.equals("x")) {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         } else {
