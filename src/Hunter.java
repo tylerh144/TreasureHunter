@@ -11,6 +11,7 @@ public class Hunter {
     private int gold;
     private boolean gameOver;
     private boolean win;
+    private boolean easyMode;
     private String[] treasures;
 
     /**
@@ -84,6 +85,18 @@ public class Hunter {
         gold += buyBackPrice;
         removeItemFromKit(item);
         return true;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public boolean isEasyMode() {
+        return easyMode;
+    }
+
+    public void setEasyMode(boolean easyMode) {
+        this.easyMode = easyMode;
     }
 
     /**
