@@ -83,7 +83,7 @@ public class TreasureHunter {
             // and the town is "tougher"
             toughness = 0.75;
         } else if (easyMode) {
-            markdown = 0;
+            markdown = 1;
             toughness = .25;
         }
 

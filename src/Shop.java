@@ -88,7 +88,7 @@ public class Shop {
         str += "Machete: " + Colors.YELLOW + MACHETE_COST + Colors.RESET + " gold\n";
         str += "Horse: " + Colors.YELLOW + HORSE_COST + Colors.RESET + " gold\n";
         str += "Boat: " + Colors.YELLOW + BOAT_COST + Colors.RESET + " gold\n";
-        str += "Boots: " + Colors.YELLOW + BOOTS_COST + Colors.RESET +"gold\n";
+        str += "Boots: " + Colors.YELLOW + BOOTS_COST + Colors.RESET +" gold\n";
         return str;
     }
 
