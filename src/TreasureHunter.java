@@ -140,6 +140,8 @@ public class TreasureHunter {
         }
         if (hunter.isWin()) {
             System.out.println("test");
+        } else if (choice.equals("x")) {
+            System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         } else {
             System.out.println(Colors.RED + "\nYou want trouble, stranger!  You got it!\nOof! Umph! Ow!");
             System.out.println("That'll teach you to go lookin' fer trouble in MY town! Now pay up!");
@@ -168,9 +170,7 @@ public class TreasureHunter {
             currentTown.lookForTrouble();
         } else if (choice.equals("h")){
             currentTown.treasureHunt();
-        } else if (choice.equals("x")) {
-            System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
-        } else {
+        } else if (!choice.equals("x")){
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
     }

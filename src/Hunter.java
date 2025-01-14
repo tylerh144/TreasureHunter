@@ -99,6 +99,10 @@ public class Hunter {
         this.easyMode = easyMode;
     }
 
+    public String[] getKit() {
+        return kit;
+    }
+
     /**
      * Removes an item from the kit by setting the index of the item to null.
      *
@@ -156,25 +160,28 @@ public class Hunter {
      *
      * @return The printable String representation of the inventory.
      */
-    public String getInventory() {
-        String printableKit = Colors.PURPLE + "";
-        String space = " ";
+    public String getInventory(String[] array) {
+        String printableKit = "";
 
-        for (String item : kit) {
+        for (String item : array) {
             if (item != null) {
-                printableKit += item + space;
+                printableKit += item + " ";
             }
         }
-        return printableKit + Colors.RESET;
+        return printableKit;
     }
+
 
     /**
      * @return A string representation of the hunter.
      */
     public String infoString() {
         String str = hunterName + " has " + Colors.YELLOW + gold + Colors.RESET + " gold";
-        if (!kitIsEmpty()) {
-            str += " and " + getInventory();
+        if (!isEmpty(kit)) {
+            str += " and " + Colors.PURPLE + getInventory(kit) + Colors.RESET;
+        }
+        if (!isEmpty(treasures)) {
+            str += "\nand " + Colors.YELLOW + getInventory(treasures) + Colors.RESET;
         }
         return str;
     }
@@ -201,9 +208,18 @@ public class Hunter {
      *
      * @return true if kit is completely empty.
      */
-    private boolean kitIsEmpty() {
-        for (String string : kit) {
+    private boolean isEmpty(String[] array) {
+        for (String string : array) {
             if (string != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean treasuresIsEmpty() {
+        for (String treasure : treasures) {
+            if (treasure != null) {
                 return false;
             }
         }
