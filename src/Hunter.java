@@ -13,6 +13,7 @@ public class Hunter {
     private boolean win;
     private boolean easyMode;
     private String[] treasures;
+    private int count;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -24,6 +25,7 @@ public class Hunter {
         this.hunterName = hunterName;
         kit = new String[6]; // only 5 possible items can be stored in kit
         treasures = new String[3];
+        count = 0;
         gold = startingGold;
         gameOver = false;
     }
@@ -217,15 +219,6 @@ public class Hunter {
         return true;
     }
 
-    private boolean treasuresIsEmpty() {
-        for (String treasure : treasures) {
-            if (treasure != null) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     /**
      * Finds the first index where there is a null value.
      *
@@ -244,11 +237,15 @@ public class Hunter {
         for (int i = 0; i < treasures.length; i++) {
              if (treasures[i] == null) {
                 treasures[i] = treasure;
+                count++;
                 break;
             } else if (treasures[i].equals(treasure)) {
                 System.out.println("You already have a " + Colors.YELLOW + treasure + Colors.RESET + ", so you put it back.");
                 break;
             }
+        }
+        if (count == 3) {
+            win = true;
         }
     }
 }

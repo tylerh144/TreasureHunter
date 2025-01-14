@@ -120,7 +120,7 @@ public class TreasureHunter {
      */
     private void showMenu() {
         String choice = "";
-        while (!choice.equals("x") && !hunter.isGameOver()) {
+        while (!choice.equals("x") && !hunter.isGameOver() && !hunter.isWin()) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
@@ -139,7 +139,7 @@ public class TreasureHunter {
             processChoice(choice);
         }
         if (hunter.isWin()) {
-            System.out.println("test");
+            System.out.println("Congratulations, you have found the last of the three treasures, you win!");
         } else if (choice.equals("x")) {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         } else {
