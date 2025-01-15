@@ -39,7 +39,7 @@ public class Terrain {
         if (hunter.hasItemInKit(neededItem)) {
             return true;
         }
-        return false;
+        return ((getTerrainName().equals(Colors.CYAN + "Jungle" + Colors.RESET)) && hunter.hasItemInKit("sword"));
     }
 
     /**

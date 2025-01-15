@@ -115,16 +115,23 @@ public class Town {
         if (Math.random() > noTroubleChance) {
             printMessage = Colors.BLUE + "You couldn't find any trouble" + Colors.RESET;
         } else {
-            printMessage = Colors.RED + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
-            int goldDiff = (int) (Math.random() * 10) + 1;
-            if (Math.random() > noTroubleChance) {
-                printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold." + Colors.RESET;
+            if (hunter.hasItemInKit("sword")) {
+                int goldDiff = (int) (Math.random() * 10) + 1;
+                System.out.println("That's a mighty fine sword there, just take some gold; I'm not in the mood for a brawl.");
                 printMessage += Colors.GREEN + "\nYou won the brawl and receive " + Colors.YELLOW + goldDiff + Colors.GREEN + " gold." + Colors.RESET;
                 hunter.changeGold(goldDiff);
             } else {
-                printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
-                printMessage += "\nYou lost the brawl and pay " + Colors.YELLOW + goldDiff + Colors.RED + " gold." + Colors.RESET;
-                hunter.changeGold(-goldDiff);
+                printMessage = Colors.RED + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
+                int goldDiff = (int) (Math.random() * 10) + 1;
+                if (Math.random() > noTroubleChance) {
+                    printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold." + Colors.RESET;
+                    printMessage += Colors.GREEN + "\nYou won the brawl and receive " + Colors.YELLOW + goldDiff + Colors.GREEN + " gold." + Colors.RESET;
+                    hunter.changeGold(goldDiff);
+                } else {
+                    printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
+                    printMessage += "\nYou lost the brawl and pay " + Colors.YELLOW + goldDiff + Colors.RED + " gold." + Colors.RESET;
+                    hunter.changeGold(-goldDiff);
+                }
             }
         }
     }

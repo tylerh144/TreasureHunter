@@ -68,7 +68,9 @@ public class TreasureHunter {
             hunter.changeGold((hunter.getGold()));
             easyMode = true;
             hunter.setEasyMode(true);
-        }    }
+        }  else if (hard.equals("s")) {
+            hunter.setSecretSamurai(true);
+        } }
 
     /**
      * Creates a new town and adds the Hunter to it.

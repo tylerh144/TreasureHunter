@@ -12,6 +12,7 @@ public class Hunter {
     private boolean gameOver;
     private boolean win;
     private boolean easyMode;
+    private boolean secretSamurai;
     private String[] treasures;
     private int count;
 
@@ -48,6 +49,14 @@ public class Hunter {
         }
     }
 
+    public void setSecretSamurai(boolean secretSamurai) {
+        this.secretSamurai = secretSamurai;
+    }
+
+    public boolean isSecretSamurai() {
+        return secretSamurai;
+    }
+
     public boolean isGameOver() {
         return gameOver;
     }
@@ -64,7 +73,7 @@ public class Hunter {
      * @return true if the item is successfully bought.
      */
     public boolean buyItem(String item, int costOfItem) {
-        if (costOfItem == 0 || gold < costOfItem || hasItemInKit(item)) {
+        if ((costOfItem == 0 && !item.equals("sword"))|| gold < costOfItem || hasItemInKit(item)) {
             return false;
         }
         gold -= costOfItem;
