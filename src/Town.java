@@ -79,10 +79,11 @@ public class Town {
         boolean canLeaveTown = terrain.canCrossTerrain(hunter);
         if (canLeaveTown) {
             String item = terrain.getNeededItem();
-            printMessage = "You used your " + item + " to cross the " + terrain.getTerrainName() + ".";
+            String coloredItem = Colors.PURPLE + item + Colors.RESET;
+            printMessage = "You used your " + coloredItem + " to cross the " + terrain.getTerrainName() + ".";
             if (checkItemBreak()) {
                 hunter.removeItemFromKit(item);
-                printMessage += "\nUnfortunately, you lost your " + item + ".";
+                printMessage += "\nUnfortunately, you lost your " + coloredItem + ".";
             }
             return true;
         }
@@ -164,7 +165,7 @@ public class Town {
                 }
                 dug = true;
             } else {
-                System.out.println("You can't dig for gold without a shovel");
+                System.out.println("You can't dig for gold without a " + Colors.PURPLE + "shovel" + Colors.RESET);
             }
         } else {
             System.out.println("You already dug for gold in this town.");
