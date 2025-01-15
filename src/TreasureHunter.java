@@ -151,6 +151,7 @@ public class TreasureHunter {
             System.out.println("\nThe stranger comes up to you, weapon in hand, malice unshakable. Their hits connect to your body and you begin to feel numb all over.");
             System.out.println("As if it were just a dream, you try to get back up. But the pain you feel in your bones overwhelms you.");
             System.out.println("Your body collapses to the ground, as if all of your matter begins to dematerializes. You hear crazed laughter from above.");
+            System.out.println("Your connection to the mortal world begins to unravel, string by string. You cannot hold on any longer.");
             System.out.println("It seems like the treasure cannot be hunted after all...");
             System.out.println("Everything goes dark and you die." + Colors.RESET);
         } else {
