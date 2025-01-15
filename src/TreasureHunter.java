@@ -155,7 +155,7 @@ public class TreasureHunter {
             System.out.println("It seems like the treasure cannot be hunted after all...");
             System.out.println("Everything goes dark and you die." + Colors.RESET);
         } else {
-            System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
+            System.out.println("Fare thee well, " + Colors.PURPLE + hunter.getHunterName() + Colors.RESET + "!");
         }
     }
 
@@ -168,7 +168,7 @@ public class TreasureHunter {
         if (choice.equals("b") || choice.equals("s")) {
             currentTown.enterShop(choice);
         } else if (choice.equals("e")) {
-            System.out.println(currentTown.getTerrain().infoString());
+            currentTown.setPrintMessage(currentTown.getTerrain().infoString());
         } else if (choice.equals("m")) {
             if (currentTown.leaveTown()) {
                 // This town is going away so print its news ahead of time.
