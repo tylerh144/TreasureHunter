@@ -57,7 +57,7 @@ public class Shop {
                 if (customer.hasItemInKit("sword")) {
                     System.out.println("The shopkeeper is going to hand you the item freely because of the sharpness of your steel.");
                     buyItem(item);
-                    hunter.changeGold(samuraiDiscount(item));
+                    //hunter.changeGold(samuraiDiscount(item));
                 } else {
                     System.out.print("It'll cost you " + Colors.YELLOW + cost + Colors.RESET + " gold. Buy it (y/n)? ");
                     String option = SCANNER.nextLine().toLowerCase();
@@ -111,10 +111,19 @@ public class Shop {
      */
     public void buyItem(String item) {
         int costOfItem = checkMarketPrice(item, true);
-        if (customer.buyItem(item, costOfItem)) {
-            System.out.println("Ye' got yerself a " + Colors.PURPLE + item + Colors.RESET + ". Come again soon.");
+        if (customer.hasItemInKit("sword")) {
+            if (customer.buyItem(item, 0)) {
+                System.out.println("You take the " + item + ".");
+            } else {
+                System.out.println("You already own one of those, so you dispose of it in the nearest waste receptacle.");
+            }
+
         } else {
-            System.out.println("Hmm, either you don't have enough gold or you've already got one of those!");
+            if (customer.buyItem(item, costOfItem)) {
+                System.out.println("Ye' got yerself a " + Colors.PURPLE + item + Colors.RESET + ". Come again soon.");
+            } else {
+                System.out.println("Hmm, either you don't have enough gold or you've already got one of those!");
+            }
         }
     }
 

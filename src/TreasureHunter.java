@@ -148,7 +148,11 @@ public class TreasureHunter {
             System.out.println(Colors.RED + "\nYou want trouble, stranger!  You got it!\nOof! Umph! Ow!");
             System.out.println("That'll teach you to go lookin' fer trouble in MY town! Now pay up!");
             System.out.println("What? You don't have enough money to pay up...then you're going to have to pay with your life!");
-            System.out.println("\nEverything goes dark and you die." + Colors.RESET);
+            System.out.println("\nThe stranger comes up to you, weapon in hand, malice unshakable. Their hits connect to your body and you begin to feel numb all over.");
+            System.out.println("As if it were just a dream, you try to get back up. But the pain you feel in your bones overwhelms you.");
+            System.out.println("Your body collapses to the ground, as if all of your matter begins to dematerializes. You hear crazed laughter from above.");
+            System.out.println("It seems like the treasure cannot be hunted after all...");
+            System.out.println("Everything goes dark and you die." + Colors.RESET);
         } else {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         }
