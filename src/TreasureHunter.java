@@ -142,13 +142,13 @@ public class TreasureHunter {
         }
         if (hunter.isWin()) {
             System.out.println(Colors.YELLOW + "Congratulations, you have found the last of the three treasures, you win!" + Colors.RESET);
-        } else if (choice.equals("x")) {
-            System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
-        } else {
+        } else if (hunter.isGameOver()) {
             System.out.println(Colors.RED + "\nYou want trouble, stranger!  You got it!\nOof! Umph! Ow!");
             System.out.println("That'll teach you to go lookin' fer trouble in MY town! Now pay up!");
             System.out.println("What? You don't have enough money to pay up...then you're going to have to pay with your life!");
             System.out.println("\nEverything goes dark and you die." + Colors.RESET);
+        } else {
+            System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         }
     }
 
