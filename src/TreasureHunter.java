@@ -64,6 +64,7 @@ public class TreasureHunter {
             hunter.testAdder("horse");
             hunter.testAdder("rope");
             hunter.testAdder("boots");
+            hunter.testAdder("shovel");
         } else if (hard.equals("e")) {
             hunter.changeGold((hunter.getGold()));
             easyMode = true;
@@ -76,11 +77,11 @@ public class TreasureHunter {
      * Creates a new town and adds the Hunter to it.
      */
     private void enterTown() {
-        double markdown = 0.25;
+        double markdown = 0.5;
         double toughness = 0.4;
         if (hardMode) {
             // in hard mode, you get less money back when you sell items
-            markdown = 0.5;
+            markdown = 0.25;
 
             // and the town is "tougher"
             toughness = 0.75;
@@ -143,13 +144,13 @@ public class TreasureHunter {
         }
         if (hunter.isWin()) {
             System.out.println(Colors.YELLOW + "Congratulations, you have found the last of the three treasures, you win!" + Colors.RESET);
-        } else if (choice.equals("x")) {
-            System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
-        } else {
+        } else if (hunter.isGameOver()) {
             System.out.println(Colors.RED + "\nYou want trouble, stranger!  You got it!\nOof! Umph! Ow!");
             System.out.println("That'll teach you to go lookin' fer trouble in MY town! Now pay up!");
             System.out.println("What? You don't have enough money to pay up...then you're going to have to pay with your life!");
             System.out.println("\nEverything goes dark and you die." + Colors.RESET);
+        } else {
+            System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         }
     }
 
