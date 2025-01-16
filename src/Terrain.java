@@ -46,6 +46,6 @@ public class Terrain {
      * @return A string representation of the terrain and item to cross it.
      */
     public String infoString() {
-        return Colors.CYAN + "You are surrounded by " + terrainName + " which needs a(n) " + Colors.PURPLE + neededItem + Colors.CYAN + " to cross." + Colors.RESET;
+        return Colors.CYAN + "\nYou are surrounded by " + terrainName + " which needs a(n) " + Colors.PURPLE + neededItem + Colors.CYAN + " to cross." + Colors.RESET;
     }
 }

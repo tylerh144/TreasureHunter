@@ -45,7 +45,7 @@ public class Shop {
     public String enter(Hunter hunter, String buyOrSell) {
         customer = hunter;
         if (buyOrSell.equals("b")) {
-            System.out.println("Welcome to the shop! We have the finest wares in town.");
+            System.out.println("\nWelcome to the shop! We have the finest wares in town.");
             System.out.println("Currently we have the following items:");
             System.out.println(inventory());
             System.out.print("What're you lookin' to buy? ");
@@ -67,7 +67,7 @@ public class Shop {
                 }
             }
         } else {
-            System.out.println("What're you lookin' to sell? ");
+            System.out.println("\nWhat're you lookin' to sell? ");
             System.out.print("You currently have the following items: " + Colors.PURPLE + customer.getInventory(customer.getKit()) + Colors.RESET);
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, false);
