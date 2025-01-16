@@ -143,11 +143,10 @@ public class TreasureHunter {
             processChoice(choice);
         }
         if (hunter.isWin()) {
+            System.out.println(currentTown.getLatestNews());
             System.out.println(Colors.YELLOW + "Congratulations, you have found the last of the three treasures, you win!" + Colors.RESET);
         } else if (hunter.isGameOver()) {
-            System.out.println(Colors.RED + "\nYou want trouble, stranger!  You got it!\nOof! Umph! Ow!");
-            System.out.println("That'll teach you to go lookin' fer trouble in MY town! Now pay up!");
-            System.out.println("What? You don't have enough money to pay up...then you're going to have to pay with your life!");
+            System.out.println(Colors.RED + "What? You don't have enough money to pay up...then you're going to have to pay with your life!");
             System.out.println("\nThe stranger comes up to you, weapon in hand, malice unshakable. Their hits connect to your body and you begin to feel numb all over.");
             System.out.println("As if it were just a dream, you try to get back up. But the pain you feel in your bones overwhelms you.");
             System.out.println("Your body collapses to the ground, as if all of your matter begins to dematerializes. You hear crazed laughter from above.");
@@ -168,7 +167,7 @@ public class TreasureHunter {
         if (choice.equals("b") || choice.equals("s")) {
             currentTown.enterShop(choice);
         } else if (choice.equals("e")) {
-            currentTown.setPrintMessage(currentTown.getTerrain().infoString());
+            System.out.println(currentTown.getTerrain().infoString());
         } else if (choice.equals("m")) {
             if (currentTown.leaveTown()) {
                 // This town is going away so print its news ahead of time.

@@ -14,6 +14,7 @@ public class Town {
     private boolean searched;
     private String treasure;
     private boolean dug;
+    private String recentMsg;
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -55,8 +56,12 @@ public class Town {
         return printMessage;
     }
 
-    public void setPrintMessage (String msg) {
-        printMessage = msg;
+    public void setPrintMessage(String printMessage) {
+        this.printMessage = printMessage;
+    }
+
+    public String getRecentMsg() {
+        return recentMsg;
     }
 
     /**
@@ -118,23 +123,26 @@ public class Town {
             noTroubleChance = 0.33;
         }
         if (Math.random() > noTroubleChance) {
-            printMessage = Colors.BLUE + "You couldn't find any trouble" + Colors.RESET;
+            System.out.println(Colors.BLUE + "You couldn't find any trouble" + Colors.RESET);
+            printMessage = "A brawl has not occurred.";
         } else {
+            int goldDiff = (int) (Math.random() * 10) + 1;
             if (hunter.hasItemInKit("sword")) {
-                int goldDiff = (int) (Math.random() * 10) + 1;
-                System.out.print("\nThat's a mighty fine sword there, just take some gold; I'm not in the mood for a brawl.");
-                printMessage = Colors.GREEN + "You won the brawl and receive " + Colors.YELLOW + goldDiff + Colors.GREEN + " gold." + Colors.RESET;
+                System.out.println(Colors.BLUE + "That's a mighty fine sword there, just take some gold; I'm not in the mood for a brawl." + Colors.RESET);
+                System.out.println(Colors.GREEN + "You won the brawl and receive " + Colors.YELLOW + goldDiff + Colors.GREEN + " gold." + Colors.RESET);
+                printMessage = "You recently won a brawl.";
                 hunter.changeGold(goldDiff);
             } else {
-                printMessage = Colors.RED + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
-                int goldDiff = (int) (Math.random() * 10) + 1;
+                System.out.println(Colors.RED + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!");
                 if (Math.random() > noTroubleChance) {
-                    printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold." + Colors.RESET;
-                    printMessage += Colors.GREEN + "\nYou won the brawl and receive " + Colors.YELLOW + goldDiff + Colors.GREEN + " gold." + Colors.RESET;
+                    System.out.println("Okay, stranger! You proved yer mettle. Here, take my gold." + Colors.RESET);
+                    System.out.println(Colors.GREEN + "You won the brawl and receive " + Colors.YELLOW + goldDiff + Colors.GREEN + " gold." + Colors.RESET);
+                    printMessage = "You recently won a brawl.";
                     hunter.changeGold(goldDiff);
                 } else {
-                    printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
-                    printMessage += "\nYou lost the brawl and pay " + Colors.YELLOW + goldDiff + Colors.RED + " gold." + Colors.RESET;
+                    System.out.println("That'll teach you to go lookin' fer trouble in MY town! Now pay up!");
+                    System.out.println("You lost the brawl and pay " + Colors.YELLOW + goldDiff + Colors.RED + " gold." + Colors.RESET);
+                    printMessage = "You recently lost a brawl.";
                     hunter.changeGold(-goldDiff);
                 }
             }
@@ -147,13 +155,22 @@ public class Town {
 
     public void treasureHunt() {
         if (!searched) {
-            printMessage = "You found a " + Colors.YELLOW + treasure + Colors.RESET;
+            System.out.println("You found a " + Colors.YELLOW + treasure + Colors.RESET);
             if (!treasure.equals("dust")) {
-                hunter.addTreasure(treasure);
+                if (toughTown && Math.random() < .7) {
+                    System.out.println("You accidentally drop the " + Colors.YELLOW + treasure + Colors.RESET + " before putting it in your bag.");
+                    printMessage = "You dropped the treasure.";
+                } else {
+                    hunter.addTreasure(treasure);
+                    printMessage = "You obtained some treasure.";
+                }
+            } else {
+                printMessage = "You did not find treasure in this town.";
             }
             searched = true;
         } else {
-            printMessage = "You have already searched this town.";
+            System.out.println("You have already searched this town.");
+            printMessage = "";
         }
     }
 
@@ -163,16 +180,20 @@ public class Town {
                 if (Math.random() < .5) {
                     int gold = (int) (Math.random() * 20) + 1;
                     hunter.changeGold(gold);
-                    printMessage = "You dug up " + Colors.YELLOW + gold + Colors.RESET + " gold!";
+                    System.out.println("You dug up " + Colors.YELLOW + gold + Colors.RESET + " gold!");
+                    printMessage = "You recently dug up some gold.";
                 } else {
-                    printMessage = "You dug but only found dirt";
+                    System.out.println("You dug but only found dirt");
+                    printMessage = "You recently dug up some dirt.";
                 }
                 dug = true;
             } else {
-                printMessage = "You can't dig for gold without a " + Colors.PURPLE + "shovel" + Colors.RESET;
+                System.out.println("You can't dig for gold without a " + Colors.PURPLE + "shovel" + Colors.RESET);
+                printMessage = "Buy a shovel.";
             }
         } else {
-            printMessage = "You already dug for gold in this town.";
+            System.out.println("You already dug for gold in this town.");
+            printMessage = "";
         }
     }
 
