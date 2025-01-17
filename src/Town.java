@@ -133,7 +133,7 @@ public class Town {
             int goldDiff = (int) (Math.random() * 10) + 1;
             if (hunter.hasItemInKit("sword")) {
                 window.addTextToWindow("\nThat's a mighty fine sword there, just take some gold; I'm not in the mood for a brawl.", Color.blue);
-                window.addTextToWindow("You won the brawl and receive " +goldDiff + " gold.", Color.green);
+                window.addTextToWindow("You won the brawl and receive " + goldDiff + " gold.", Color.green);
                 printMessage = "You recently won a brawl.";
                 hunter.changeGold(goldDiff);
             } else {
