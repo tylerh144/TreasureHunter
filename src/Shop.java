@@ -55,7 +55,7 @@ public class Shop {
             window.addTextToWindow("What're you lookin' to buy? ", Color.black);
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, true);
-            if (cost == 0 && !item.equals("sword")) {
+            if ((cost == 0 && !item.equals("sword")) || (!customer.isSecretSamurai() && item.equals("sword"))) {
                 window.addTextToWindow("We ain't got none of those.", Color.black);
             } else {
                 if (customer.hasItemInKit("sword")) {

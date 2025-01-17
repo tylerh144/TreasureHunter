@@ -12,7 +12,7 @@ public class Hunter {
     private boolean gameOver;
     private boolean win;
     private boolean easyMode;
-    private boolean secretSamurai;
+    private boolean secretSamurai = false;
     private String[] treasures;
     private int count;
 
