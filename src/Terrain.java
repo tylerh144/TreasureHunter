@@ -21,7 +21,7 @@ public class Terrain {
 
     // accessors
     public String getTerrainName() {
-        return Colors.CYAN + terrainName + Colors.RESET;
+        return terrainName;
     }
 
     public String getNeededItem() {
@@ -39,13 +39,13 @@ public class Terrain {
         if (hunter.hasItemInKit(neededItem)) {
             return true;
         }
-        return ((getTerrainName().equals(Colors.CYAN + "Jungle" + Colors.RESET)) && hunter.hasItemInKit("sword"));
+        return ((getTerrainName().equals("Jungle")) && hunter.hasItemInKit("sword"));
     }
 
     /**
      * @return A string representation of the terrain and item to cross it.
      */
     public String infoString() {
-        return Colors.CYAN + "\nYou are surrounded by " + terrainName + " which needs a(n) " + Colors.PURPLE + neededItem + Colors.CYAN + " to cross." + Colors.RESET;
+        return "\nYou are surrounded by " + terrainName + " which needs a(n) "+ neededItem + " to cross.";
     }
 }
