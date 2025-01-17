@@ -132,7 +132,7 @@ public class TreasureHunter {
             window.addTextToWindow(currentTown.getLatestNews(), Color.black);
             window.addTextToWindow("\n", Color.black);
             window.addTextToWindow("***\n", Color.black);
-            window.addTextToWindow(hunter.infoString(), Color.black);
+            window.addTextToWindow(hunter.infoString(), Color.orange);
             window.addTextToWindow("\n", Color.black);
             window.addTextToWindow(currentTown.infoString(), Color.black);
             window.addTextToWindow("\n", Color.black);
@@ -155,13 +155,13 @@ public class TreasureHunter {
             window.addTextToWindow(currentTown.getLatestNews(), Color.black);
             window.addTextToWindow("Congratulations, you have found the last of the three treasures, you win!", Color.yellow);
         } else if (hunter.isGameOver()) {
-            window.addTextToWindow("What? You don't have enough money to pay up...then you're going to have to pay with your life!\n", Color.red);
-            window.addTextToWindow("\nThe stranger comes up to you, weapon in hand, malice unshakable. Their hits connect to your body and you begin to feel numb all over.\n", Color.red);
-            window.addTextToWindow("As if it were just a dream, you try to get back up. But the pain you feel in your bones overwhelms you.\n", Color.red);
-            window.addTextToWindow("Your body collapses to the ground, as if all of your matter begins to dematerializes. You hear crazed laughter from above.\n", Color.red);
-            window.addTextToWindow("Your connection to the mortal world begins to unravel, string by string. You cannot hold on any longer. \n", Color.red);
-            window.addTextToWindow("It seems like the treasure cannot be hunted after all... \n", Color.red);
-            window.addTextToWindow("Everything goes dark and you die.", Color.red);
+            window.addTextToWindow("\nWhat? You don't have enough money to pay up...then you're going to have to pay with your life!\n", Color.red);
+            window.addTextToWindow("\nThe stranger comes up to you, weapon in hand, malice unshakable. Their hits connect to your body and you begin to feel numb all over. ", Color.red);
+            window.addTextToWindow("As if it were just a dream, you try to get back up. But the pain you feel in your bones overwhelms you. ", Color.red);
+            window.addTextToWindow("Your body collapses to the ground, as if all of your matter begins to dematerializes. You hear crazed laughter from above. ", Color.red);
+            window.addTextToWindow("Your connection to the mortal world begins to unravel, string by string. You cannot hold on any longer. ", Color.red);
+            window.addTextToWindow("It seems like the treasure cannot be hunted after all... ", Color.red);
+            window.addTextToWindow("\nEverything goes dark and you die.", Color.red);
         } else {
             window.addTextToWindow("Fare thee well, ", Color.black);
             window.addTextToWindow(hunter.getHunterName(), Color.MAGENTA);

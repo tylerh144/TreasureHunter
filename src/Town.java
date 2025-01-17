@@ -133,19 +133,22 @@ public class Town {
             int goldDiff = (int) (Math.random() * 10) + 1;
             if (hunter.hasItemInKit("sword")) {
                 window.addTextToWindow("\nThat's a mighty fine sword there, just take some gold; I'm not in the mood for a brawl.", Color.blue);
-                window.addTextToWindow("You won the brawl and receive " +goldDiff + " gold.", Color.green);
+                window.addTextToWindow("\nYou won the brawl and receive ", Color.green);
+                window.addTextToWindow(goldDiff + " gold.", Color.orange);
                 printMessage = "You recently won a brawl.";
                 hunter.changeGold(goldDiff);
             } else {
                 window.addTextToWindow("\nYou want trouble, stranger!  You got it!\nOof! Umph! Ow!", Color.red);
                 if (Math.random() > noTroubleChance) {
-                    window.addTextToWindow("Okay, stranger! You proved yer mettle. Here, take my gold.", Color.green);
-                    window.addTextToWindow("You won the brawl and receive " + goldDiff +" gold.", Color.green);
+                    window.addTextToWindow("\nOkay, stranger! You proved yer mettle. Here, take my gold.", Color.green);
+                    window.addTextToWindow("\nYou won the brawl and receive ", Color.green);
+                    window.addTextToWindow(goldDiff +" gold.", Color.orange);
                     printMessage = "You recently won a brawl.";
                     hunter.changeGold(goldDiff);
                 } else {
-                    window.addTextToWindow("That'll teach you to go lookin' fer trouble in MY town! Now pay up!", Color.red);
-                    window.addTextToWindow("You lost the brawl and pay "+ goldDiff +" gold.", Color.red);
+                    window.addTextToWindow("\nThat'll teach you to go lookin' fer trouble in MY town! Now pay up!", Color.red);
+                    window.addTextToWindow("\nYou lost the brawl and pay ", Color.red);
+                    window.addTextToWindow(goldDiff +" gold.", Color.orange);
                     printMessage = "You recently lost a brawl.";
                     hunter.changeGold(-goldDiff);
                 }
@@ -159,10 +162,11 @@ public class Town {
 
     public void treasureHunt() {
         if (!searched) {
-            window.addTextToWindow("\nYou found a " + treasure + ".", Color.black);
+            window.addTextToWindow("\nYou found a ", Color.black);
+            window.addTextToWindow(treasure + ".\n", Color.orange);
             if (!treasure.equals("dust")) {
                 if (toughTown && Math.random() < .7) {
-                    window.addTextToWindow("However, you accidentally drop the " + treasure + " before putting it in your bag.", Color.red);
+                    window.addTextToWindow("\nHowever, you accidentally drop the " + treasure + " before putting it in your bag.", Color.red);
                     printMessage = "You dropped the treasure.";
                 } else {
                     hunter.addTreasure(treasure);
